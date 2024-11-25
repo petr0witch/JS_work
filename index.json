@@ -1,0 +1,82 @@
+{
+    "acceleration_url": "https://5ballov.russianpost.ru/magic/api/neworders.php",
+    "authorization_token": "Bearer CT_CHATd896ce58227c2bc0c26719c83a86957c",
+    "RPIntegrationKey": "rp_integration_key_5ballov",
+    "topic": "topic_5ballov",
+    "barcode": "rupost_track_input_5ballov",
+    "fiozaiki": "fio_for_5ballov",
+    "fromindex": "rupost_cs_index_5ball",
+    "comment": "comment_5ballov",
+    "requestBadRedirectTo": "bad_request_5ballov",
+    "requestSuccessfullyRedirectTo": "good_request_5ballov",
+    "timeout": "600000"
+  }
+
+curl -k -X POST "https://5ballov.russianpost.ru/magic/api/neworders.php" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer CT_CHATd896ce58227c2bc0c26719c83a86957c" \
+-d '{
+    "ticket2": {
+        "RPIntegrationKey": 439123,
+        "topic": "РПО застряло, нужно протолкнуть",
+        "barcode": "rupost_track_input_5ballov",
+        "fiozaiki": "fio_for_5ballov",
+        "fromindex": "rupost_cs_index",
+        "comment": "Просьба ускорить обработку отправления"
+    }
+}'
+
+
+
+  /switchredirect aiassist2 intent_id="good_request_5ballov"
+  /switchredirect aiassist2 intent_id="${agentSettings.replyForError}"
+
+  Трек: 80513402359738
+json трек номера: 80513402359738.json
+Значение:
+{
+"rupost_track_ok": "И1-К1-С0",
+"rupost_tracking_operation": "Обработка",
+"rupost_adress": "Екатеринбург 57",
+"rupost_index_delivery": "620057",
+"rupost_tracking_type": "ЕКОМ Маркетплейс",
+"rupost_date_last": "21.10.2024",
+"rupost_attribute": "Сортировка",
+"rupost_date_plan": "26.10.2024",
+"rupost_cs_date": "2024.10.19, 16:35",
+"rupost_cs_index": "452453",
+"rupost_expire_flag": "fresh",
+"rupost_country_arrival": "Российская Федерация",
+"rupost_date_now_plus": "26.10.2024",
+"rupost_operation_today": "",
+"rupost_date_fail": "",
+"rupost_date_zasylka": "",
+"rupost_atrribute_return": ""
+}
+
+// для тестового пространства
+
+{
+  "acceleration_url": "https://5ballov.russianpost.ru/magic/api/neworders.php",
+  "authorization_token": "Bearer 6-i*n1gNj@=\\#Q]=U/ZyZBe]D0yc",
+  "RPIntegrationKey": 439123,
+  "topic": "РПО застряло, нужно протолкнуть",
+  "barcode": "80511803000605",
+  "fiozaiki": "Тестова Тестинья Тестовна",
+  "fromindex": "888888",
+  "comment": "Просьба ускорить обработку отправления",
+  "requestBadRedirectTo": "bad_request_5ballov",
+  "requestSuccessfullyRedirectTo": "good_request_5ballov",
+  "timeout": "600000"
+}
+
+// GET
+{
+  "acceleration_url": "https://5ballov.russianpost.ru/magic/api/neworders.php",
+  "authorization_token": "Bearer 6-i*n1gNj@=\\#Q]=U/ZyZBe]D0yc",
+  "RPIntegrationKey": 439123,
+    
+  "comment": "5ballov_ticket_number",
+  
+  "timeout": "600000"
+}

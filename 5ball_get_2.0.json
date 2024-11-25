@@ -1,0 +1,16 @@
+{
+    "acceleration_url": "https://5ballov.russianpost.ru/magic/api/neworders.php",
+    "authorization_token": "Bearer CT_CHATd896ce58227c2bc0c26719c83a86957c",
+    "RPIntegrationKey": 439123,
+      
+    "comment": "5ballov_ticket_number",
+    
+    "timeout": "600000"
+}
+
+{
+    "acceleration_url": "https://5ballov.russianpost.ru/magic/api/cftalk.php",
+    "authorization_token": "Bearer CT_CHATd896ce58227c2bc0c26719c83a86957c",
+    "comment": "5ballov_ticket_number",
+    "timeout": "600000"
+}
