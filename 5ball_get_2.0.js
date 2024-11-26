@@ -39,10 +39,13 @@ async function createNewTaskGet(api) {
 async function createNewTaskPost() {
     //POST
     try {
+        // const data = {
+        //     ticket2: {
+        //         comment: getSlotValue(COMMENT),
+        //     },
+        // };
         const data = {
-            ticket2: {
-                comment: getSlotValue(COMMENT),
-            },
+            comment: getSlotValue(COMMENT),
         };
 
         logger.info(`Data (POST): ${JSON.stringify(data)}`);
@@ -98,19 +101,20 @@ async function sendMessage(reply) {
 }
 
 async function run() {
-    await sendMessage('Старт');
+    //await sendMessage('Старт');
 
     const api = await createApi();
 
-    // GET-запрос
-    const responseGet = await createNewTaskGet(api);
-    await sendMessage(`Response (GET): ${typeof responseGet === 'string' ? responseGet : JSON.stringify(responseGet)}`);
-
     // POST-запрос
     const responsePost = await createNewTaskPost();
-    await sendMessage(`Response (POST): ${typeof responsePost === 'string' ? responsePost : JSON.stringify(responsePost)}`);
+    //await sendMessage(`Response (POST): ${typeof responsePost === 'string' ? responsePost : JSON.stringify(responsePost)}`);
 
-    await sendMessage('Конец');
+    // GET-запрос
+    const responseGet = await createNewTaskGet(api);
+    await sendMessage(`${typeof responseGet === 'string' ? responseGet : JSON.stringify(responseGet)}`); // Response (GET): 
+
+
+    //await sendMessage('Конец');
 }
 
 run()
