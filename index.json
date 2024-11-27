@@ -26,7 +26,7 @@ curl -k -X POST "https://5ballov.russianpost.ru/magic/api/neworders.php" \
     }
 }'
 
-
+https://5ballov.russianpost.ru/magic/api/cftalk.php
 
   /switchredirect aiassist2 intent_id="good_request_5ballov"
   /switchredirect aiassist2 intent_id="${agentSettings.replyForError}"

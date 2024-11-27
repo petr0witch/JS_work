@@ -15,14 +15,13 @@ async function createApi() {
             rejectUnauthorized: false,
         }),
     });
-    
     instance.defaults.timeout = 600000;
     return instance;
 }
 
 async function sendPostRequest(comment) {
     try {
-        const data = { comment }; // Передаём комментарий
+        const data = { comment };
 
         const config = {
             headers: {
@@ -81,14 +80,8 @@ async function sendMessage(reply) {
 }
 
 async function run() {
-    // await sendMessage('Старт');
-
     const api = await createApi();
-
-    // Получаем значение комментария
     const commentValue = getSlotValue(COMMENT);
-
-    // Извлекаем username пользователя из Telegram-структуры !!!!!!
     const username = message?.message?.from?.username || message?.chat?.username || 'Неизвестный пользователь';
 
     // Выполняем POST-запрос
@@ -96,29 +89,42 @@ async function run() {
     if (responsePost?.error) {
         await sendMessage(`Ошибка при POST-запросе: ${responsePost.error}`);
         return;
-    }
-    // Выполняем GET-запрос
-    const responseGet = await sendGetRequest(api);
+    }  
+    const getResponseMessage = `Ответ сервера (POST):\n${JSON.stringify(responsePost, null, 2)}`;
 
-    // Проверяем ответ сервера
-    if (!responseGet || typeof responseGet !== 'string') {
-        await sendMessage('Ответ сервера пустой или имеет некорректный формат.');
-        return;
-    }
+    // const getResponseMessage = `Ответ:\n${responsePost}`;
 
-    // Логируем полный ответ сервера
-    //logger.info(`Получен ответ от сервера: ${JSON.stringify(responseGet, null, 2)}`);
-
-    // Формируем сообщение для чата
-    //const getResponseMessage = `Ответ сервера:\n${responseGet}\n\nПереданный комментарий:\n${commentValue}\n\nИмя пользователя Telegram:\n${username}`;
-    //TEST
-    const getResponseMessage = `Ответ сервера (GET):\n${responseGet}\n\nОтвет сервера (POST):\n${JSON.stringify(responsePost, null, 2)}\n\nПереданный комментарий:\n${commentValue}\n\nИмя пользователя Telegram:\n${username}`;
-
-
-    // Отправляем сообщение в чат
     await sendMessage(getResponseMessage);
-    //await sendMessage('Конец');
 }
+
+
+// async function run() {
+//     const api = await createApi();
+//     const commentValue = getSlotValue(COMMENT);
+//     const username = message?.message?.from?.username || message?.chat?.username || 'Неизвестный пользователь';
+
+//     // Выполняем POST-запрос
+//     const responsePost = await sendPostRequest(commentValue);
+//     if (responsePost?.error) {
+//         await sendMessage(`Ошибка при POST-запросе: ${responsePost.error}`);
+//         return;
+//     }
+//     // Выполняем GET-запрос
+//     const responseGet = await sendGetRequest(api);
+
+//     // Проверяем ответ сервера
+//     if (!responseGet || typeof responseGet !== 'string') {
+//         await sendMessage('Ответ сервера пустой или имеет некорректный формат.');
+//         return;
+//     }
+
+//     // Формируем сообщение для чата
+//     //const getResponseMessage = `Ответ сервера:\n${responseGet}\n\nПереданный комментарий:\n${commentValue}\n\nИмя пользователя Telegram:\n${username}`;
+//     //TEST
+//     const getResponseMessage = `Ответ сервера (GET):\n${responseGet}\n\nОтвет сервера (POST):\n${JSON.stringify(responsePost, null, 2)}\n\nПереданный комментарий:\n${commentValue}\n\nИмя пользователя Telegram:\n${username}`;
+
+//     await sendMessage(getResponseMessage);
+// }
 
 run()
     .then(() => {
