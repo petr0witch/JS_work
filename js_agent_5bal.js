@@ -44,16 +44,22 @@ async function createNewTask() {
         } else {
             const response = await axios.post(ACCELERATION_URL, data, config)
             logger.info(`Response service 5ballov: ${JSON.stringify(response.data)}`)
+            
+            const rescode_5b = Object.values(response.data)[0].rescode
+            logger.info(`Response service 5ballov TEST: ${rescode_5b}`)
+
             const slots= {
-                resopnse_5ballov_status: response.data
+                resopnse_5ballov_status: response.data  // запись data в слот для статьи
             }
             return [
                 agentApi.makeTextReply(`/switchredirect aiassist2 intent_id="${REQUEST_SUCCESSFULLY_REDIRECT_TO}"`,
                     undefined,
                     undefined,
-                    {
-                    ...JSON.parse(JSON.stringify(slots)),
-                }),
+                    { rescode_5b } // Передаём значение rescode вместо JSON
+                    // {
+                    // ...JSON.parse(JSON.stringify(slots)),
+                    // }
+                ),
             ]
         } 
     } catch (error) {

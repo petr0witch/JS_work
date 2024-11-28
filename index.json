@@ -9,6 +9,7 @@
     "comment": "comment_5ballov",
     "requestBadRedirectTo": "bad_request_5ballov",
     "requestSuccessfullyRedirectTo": "good_request_5ballov",
+    "rescode_5b": "rescode_5b", //test
     "timeout": "600000"
   }
 
@@ -79,4 +80,21 @@ json трек номера: 80513402359738.json
   "comment": "5ballov_ticket_number",
   
   "timeout": "600000"
+}
+
+
+{\"ticket2\":
+  {\"RPIntegrationKey\":\"439123\",\"topic\":\"РПО застряло, нужно протолкнуть\",\"barcode\":\"12312312312358\",\"fiozaiki\":\"2811 1234\",\"fromindex\":\"888888\",\"comment\":\"Просьба ускорить обработку отправления\"
+  }
+}
+
+{\"439123\":
+  {\"rescode\":200,\"result\":\"Тикет создан #5330579\",\"zid\":\"5330579\"}
+}
+
+["{\"rescode\"}"]
+
+{\"439123\":
+  {\"rescode\":208,\"result\":\"Попытка внести дубли. Обработка остановлена<br><pre>5330579\\tРПО застряло, нужно протолкнуть\\t<a href=\\\"iszaika.php?act=search&barcode=12312312312358\\\">12312312312358</a>\\t2024-11-28 12:34:49\\n</pre>\"
+  }
 }
