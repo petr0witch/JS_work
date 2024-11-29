@@ -5,7 +5,7 @@
     "topic": "topic_5ballov",
     "barcode": "rupost_track_input_5ballov",
     "fiozaiki": "fio_for_5ballov",
-    "fromindex": "rupost_cs_index_5ball",
+    "fromindex": "rupost_cs_index", //"rupost_cs_index_5ball"
     "comment": "comment_5ballov",
     "requestBadRedirectTo": "bad_request_5ballov",
     "requestSuccessfullyRedirectTo": "good_request_5ballov",

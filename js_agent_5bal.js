@@ -37,7 +37,7 @@ async function createNewTask() {
         }
         if (!data.ticket2.barcode || data.ticket2.barcode === ''
             || !data.ticket2.fromindex || data.ticket2.fromindex === '') {
-            logger.info(`There are no fields in the request: barcode or from inside`)
+            logger.info(`Не хватает полей для запроса: трек или индекс СЦ`)
             return [
                 agentApi.makeTextReply(`/switchredirect aiassist2 intent_id="${REQUEST_BAD_REDIRECT_TO}"`),
             ]

@@ -14,5 +14,7 @@ https://5ballov.russianpost.ru/magic/api/cftalk.php
     "acceleration_url": "https://5ballov.russianpost.ru/magic/api/cftalk.php",
     "authorization_token": "Bearer CT_CHATd896ce58227c2bc0c26719c83a86957c",
     "comment": "5b_comment",
+    "sys_firstname": "sys_firstname", //
+    "sys_lastname": "sys_lastname", //
     "timeout": "600000"
 }

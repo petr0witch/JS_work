@@ -2,6 +2,8 @@ const BASE_URL = 'https://5ballov.russianpost.ru';
 const ACCELERATION_URL = agentSettings.acceleration_url;
 const AUTHORIZATION_TOKEN = agentSettings.authorization_token;
 const COMMENT = agentSettings.comment; // comment передаётся из настроек
+const SYS_FIRSTNAME = agentSettings.sys_firstname;
+const SYS_LASTNAME = agentSettings.sys_lastname;
 axios.defaults.timeout = agentSettings.timeout;
 
 const getSlotValue = (slotId) =>
@@ -82,6 +84,9 @@ async function sendMessage(reply) {
 async function run() {
     const api = await createApi();
     const commentValue = getSlotValue(COMMENT);
+    const sys_firstname = getSlotValue(SYS_FIRSTNAME);
+    const sys_lastname = getSlotValue(SYS_LASTNAME);
+    
     const username = message?.message?.from?.username || message?.chat?.username || 'Неизвестный пользователь';
 
     // Выполняем POST-запрос
@@ -90,7 +95,8 @@ async function run() {
         await sendMessage(`Ошибка при POST-запросе: ${responsePost.error}`);
         return;
     }  
-    const getResponseMessage = `Ответ сервера (POST):\n${JSON.stringify(responsePost, null, 2)}`;
+    //const getResponseMessage = `Переданный комментарий (POST):\n${JSON.stringify(responsePost, null, 2)} \n\nПользователь:\n${sys_firstname}` + ` ` + `${sys_lastname}`;
+    const getResponseMessage = `Переданный комментарий (POST):\n${commentValue}\n\n\n${JSON.stringify(responsePost, null, 2)} \nПользователь:\n${sys_firstname}` + ` ` + `${sys_lastname}`;
 
     // const getResponseMessage = `Ответ:\n${responsePost}`;
 
