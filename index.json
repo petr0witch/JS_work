@@ -3,15 +3,17 @@
     "authorization_token": "Bearer CT_CHATd896ce58227c2bc0c26719c83a86957c",
     "RPIntegrationKey": "rp_integration_key_5ballov",
     "topic": "topic_5ballov",
-    "barcode": "rupost_track_input_5ballov",
+    "barcode": "rupost_track_input", 
     "fiozaiki": "fio_for_5ballov",
-    "fromindex": "rupost_cs_index", //"rupost_cs_index_5ball"
+    "fromindex": "rupost_cs_index", 
     "comment": "comment_5ballov",
     "requestBadRedirectTo": "bad_request_5ballov",
     "requestSuccessfullyRedirectTo": "good_request_5ballov",
-    "rescode_5b": "rescode_5b", //test
+    "rescode_5b": "rescode_5b", 
     "timeout": "600000"
-  }
+}
+
+  "barcode": "rupost_track_input_5ballov", 
 
 curl -k -X POST "https://5ballov.russianpost.ru/magic/api/neworders.php" \
 -H "Content-Type: application/json" \

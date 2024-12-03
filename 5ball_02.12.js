@@ -39,7 +39,9 @@ async function sendPostRequest(comment, userdata) {
 
         const response = await axios.post(ACCELERATION_URL, data, config);
         
-        logger.info(`POST-запрос отправлен с данными: ${JSON.stringify(response.data).replace(/\\n/g, ' ').replace(/\\t/g, ' ')}`);
+        //logger.info(`POST-запрос отправлен с данными: ${JSON.stringify(response.data).replace(/\\n/g, ' ').replace(/\\t/g, ' ')}`);
+        logger.info(`2. POST-запрос отправлен с данными: ${JSON.stringify(response.data)}`);
+
 
         return response.data;
     } catch (error) {
@@ -88,7 +90,7 @@ async function run() {
     const sys_firstname = getSlotValue(SYS_FIRSTNAME);
     const sys_lastname = getSlotValue(SYS_LASTNAME);
     
-    const username = message?.message?.from?.username || message?.chat?.username || 'Неизвестный пользователь';
+    //const username = message?.message?.from?.username || message?.chat?.username || 'Неизвестный пользователь';
 
     // Выполняем POST-запрос
     const responsePost = await sendPostRequest(commentValue, userdata);
@@ -96,12 +98,10 @@ async function run() {
         await sendMessage(`Ошибка при POST-запросе: ${responsePost.error}`);
         return;
     }  
-    //const getResponseMessage = `Переданный комментарий (POST):\n${JSON.stringify(responsePost, null, 2)} \n\nПользователь:\n${sys_firstname}` + ` ` + `${sys_lastname}`;
-    //const getResponseMessage = `{comment: '${commentValue}', user: '${sys_firstname} ${sys_lastname}'}`;
-
-    const getResponseMessage = `Пришло:\ncomment - ${commentValue}\nuserdata - ${sys_firstname} ${sys_lastname}`;    
-
-    await sendMessage(getResponseMessage);
+    //const getResponseMessage = `Пришло:\ncomment - ${commentValue}\nuserdata - ${sys_firstname} ${sys_lastname}`;    
+    //await sendMessage(getResponseMessage);
+    
+    await sendMessage(responsePost); // то что постим
 }
 
 run()

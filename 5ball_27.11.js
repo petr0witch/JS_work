@@ -96,7 +96,7 @@ async function run() {
         return;
     }  
     //const getResponseMessage = `Переданный комментарий (POST):\n${JSON.stringify(responsePost, null, 2)} \n\nПользователь:\n${sys_firstname}` + ` ` + `${sys_lastname}`;
-    const getResponseMessage = `Переданный комментарий (POST):\n${commentValue}\n\n\n${JSON.stringify(responsePost, null, 2)} \nПользователь:\n${sys_firstname}` + ` ` + `${sys_lastname}`;
+    //const getResponseMessage = `{comment: '${commentValue}', user: '${sys_firstname} ${sys_lastname}'}`;
 
     // const getResponseMessage = `Ответ:\n${responsePost}`;
 
